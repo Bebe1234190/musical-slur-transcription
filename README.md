@@ -28,6 +28,44 @@ python main.py --step train       # Train transformer only
 python main.py --step test-pipeline  # Test data pipeline
 ```
 
+### 4. Multi-Trial Training (Using Pre-annotated Data)
+
+The repository includes 4 fully annotated pieces. To run multi-trial training with all combinations:
+
+```bash
+# Run all 12 combinations with 5 trials each
+python src/run_multi_trial_training.py \
+    --chunk-size 200 \
+    --chunk-overlap 100 \
+    --trials-per-combination 5 \
+    --epochs 200
+
+# Run a specific combination multiple times
+python src/run_multi_trial_training.py \
+    --combination 1 \
+    --repeat-combination 5 \
+    --chunk-size 200 \
+    --chunk-overlap 100 \
+    --epochs 200
+```
+
+**Available annotated pieces:**
+- `Beethoven_Piano_Sonata_No_10_Op_14_No_2_fQqNsTUvqCY_cut_mov_1`
+- `midis_for_evaluation_ground_truth_beethoven_sonata_no_16_hisamori_cut_mov_1`
+- `midis_for_evaluation_ground_truth_beethoven_rondo_a_capriccio_op_129_smythe`
+- `midis_for_evaluation_ground_truth_chopin_etude_op_10_no_12`
+
+The script automatically finds all files ending with `_slur_annotation_completed.csv` in the `output/` directory.
+
+**Training Outputs:**
+- Results are printed to the terminal in real-time
+- Per-trial metrics (test accuracy, validation accuracy, training accuracy, epochs, time)
+- Summary statistics across all trials (mean ± std, ranges)
+- Per-class analysis (precision, recall, F1-score for each slur category)
+- Detailed results table showing all combination trials
+
+**Note:** Model checkpoints (`.pt` files) and large data files (`.npy`) are excluded from the repository via `.gitignore` but are generated locally during training.
+
 ## Project Structure
 
 ```
@@ -63,9 +101,21 @@ Slur Transcription Project/
 ## Workflow
 
 1. **MIDI Processing**: Extract notes, timing, pedal information
-2. **Annotation**: Manually label slur categories (1=start, 2=middle, 3=end, 4=none)
+2. **Annotation**: Manually label slur categories (see Annotation Format below)
 3. **Training**: Transformer learns slur patterns from annotated sequences
 4. **Prediction**: Apply trained model to new pieces
+
+## Annotation Format
+
+Slur categories are labeled as integers in the annotation CSV files:
+- **0**: Background (unused in current implementation)
+- **1**: Slur start
+- **2**: Slur middle
+- **3**: Slur end
+- **4**: No slur
+- **5**: Slur start and end (single-note slur)
+
+The model maps these to 5 output classes: `[slur_start, slur_middle, slur_end, no_slur, slur_start_and_end]` (category 0 is mapped to class 3: no_slur).
 
 ## Model Details
 
