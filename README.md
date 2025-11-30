@@ -1,4 +1,4 @@
-# MIDI Piano Roll ML System - Transformer Edition
+# Musical Slur Transcription Project
 
 A machine learning system for predicting musical slur annotations from MIDI files using transformer-based sequence modeling.
 
@@ -31,24 +31,25 @@ python main.py --step test-pipeline  # Test data pipeline
 ## Project Structure
 
 ```
-MIDI_Piano_Roll_ML_System/
+Slur Transcription Project/
 ├── main.py                     # Main entry point
 ├── requirements.txt            # Dependencies
-├── data/                       # Input MIDI files
-├── output/                     # Generated data files
-├── src/                        # Source code
-│   ├── main_ml.py             # ML workflow orchestration
+├── output/                      # Generated data files (MIDI, CSVs, models)
+├── src/                         # Source code
+│   ├── main_ml.py              # ML workflow orchestration
 │   ├── complete_midi_processor.py  # MIDI → data conversion
-│   ├── slur_annotation_tool.py     # Annotation CSV creation
+│   ├── slur_annotation_tool.py      # Annotation CSV creation
 │   ├── ml_data_pipeline.py         # Transformer data prep
 │   ├── ml_transformer_model.py     # PyTorch transformer
+│   ├── ml_chunked_train.py         # Chunked training logic
+│   ├── ml_chunked_pipeline.py      # Chunking utilities
+│   ├── run_multi_trial_training.py # Multi-trial training script
 │   └── ml_train.py                 # Training script
-├── docs/                       # Documentation
-│   ├── README_ML_APPROACH.md      # Transformer approach guide
-│   ├── MIGRATION_SUMMARY.md       # Migration details
-│   ├── CLEANUP_GUIDE.md           # Cleanup documentation
-│   └── [session docs...]          # Development history
-└── archive_matrix_approach/    # Old matrix-based files
+└── docs/                        # Documentation
+    ├── PROJECT_COMPREHENSIVE_DOCUMENTATION_DECEMBER_2025.md
+    ├── MODEL_ARCHITECTURE_SECTION.md
+    ├── PROJECT_ORGANIZATION.md
+    └── [other documentation files...]
 ```
 
 ## Approach
@@ -58,12 +59,6 @@ MIDI_Piano_Roll_ML_System/
 - **Output**: 5-class predictions [slur_start, slur_middle, slur_end, no_slur, slur_start_and_end]
 - **Architecture**: Self-attention transformer encoder (794K parameters)
 - **Loss Function**: CrossEntropyLoss (multi-class classification)
-
-### Key Advantages
-- **99.95% data reduction**: 2,640 notes vs 26M matrix elements
-- **Musical focus**: Models temporal relationships directly
-- **Efficient training**: Fast convergence on musical patterns
-- **Scalable**: Easy to add more pieces and composers
 
 ## Workflow
 
@@ -83,17 +78,10 @@ MIDI_Piano_Roll_ML_System/
 ## Documentation
 
 See `docs/` directory for detailed documentation:
-- `README_ML_APPROACH.md` - Transformer approach details
-- `MIGRATION_SUMMARY.md` - Migration from matrix approach
-- Session documentation - Development history and insights
-
-## Next Steps
-
-1. **Annotation**: Complete slur category annotation in CSV files (5 categories: 0-4, plus 5 for single-note slurs)
-2. **Training**: Multi-combination evaluation across all piece combinations
-3. **Expansion**: Currently 4 annotated pieces (~13,000 notes)
-4. **Evaluation**: Comprehensive per-class analysis and research reports
-5. **Improvement**: Address high variance through better initialization and regularization
+- `PROJECT_COMPREHENSIVE_DOCUMENTATION_DECEMBER_2025.md` - Complete project documentation
+- `MODEL_ARCHITECTURE_SECTION.md` - Detailed model architecture for research papers
+- `PROJECT_ORGANIZATION.md` - Project structure and organization
+- Other session and migration documentation
 
 ## Requirements
 
@@ -106,4 +94,4 @@ See `requirements.txt` for complete list.
 
 ---
 
-**MIDI Piano Roll ML System v2.0** - Focusing on musical intelligence through transformer-based sequence modeling.
+**Musical Slur Transcription Project** - Transformer-based sequence modeling for musical slur prediction.
