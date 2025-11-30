@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Model files and large data
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+
+# Log files
+*.log
+training_output*.log
+
+# Output files (except completed annotations and metadata)
+output/*.pt
+output/*.npy
+output/*.log
+output/multi_trial_combination_results.txt
+output/research_summary_report.txt
+
+# Keep these output files:
+!output/*_slur_annotation_completed.csv
+!output/*_metadata.txt
+!output/*_pedal.csv
+!output/*.mid
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Excel files (if you want to exclude them)
+# *.xlsx
+
