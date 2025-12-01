@@ -1,4 +1,4 @@
-# Musical Slur Transcription Project
+# Musical Slur Transcription
 
 A machine learning system for predicting musical slur annotations from MIDI files using transformer-based sequence modeling.
 
@@ -66,10 +66,10 @@ The script automatically finds all files ending with `_slur_annotation_completed
 
 **Note:** Model checkpoints (`.pt` files) and large data files (`.npy`) are excluded from the repository via `.gitignore` but are generated locally during training.
 
-## Project Structure
+## Structure
 
 ```
-Slur Transcription Project/
+Musical Slur Transcription/
 ├── main.py                     # Main entry point
 ├── requirements.txt            # Dependencies
 ├── output/                      # Generated data files (MIDI, CSVs, models)
@@ -128,9 +128,9 @@ The model maps these to 5 output classes: `[slur_start, slur_middle, slur_end, n
 ## Documentation
 
 See `docs/` directory for detailed documentation:
-- `PROJECT_COMPREHENSIVE_DOCUMENTATION_DECEMBER_2025.md` - Complete project documentation
+- `PROJECT_COMPREHENSIVE_DOCUMENTATION_DECEMBER_2025.md` - Complete documentation
 - `MODEL_ARCHITECTURE_SECTION.md` - Detailed model architecture for research papers
-- `PROJECT_ORGANIZATION.md` - Project structure and organization
+- `PROJECT_ORGANIZATION.md` - Structure and organization
 - Other session and migration documentation
 
 ## Requirements
@@ -144,4 +144,4 @@ See `requirements.txt` for complete list.
 
 ---
 
-**Musical Slur Transcription Project** - Transformer-based sequence modeling for musical slur prediction.
+**Musical Slur Transcription** - Transformer-based sequence modeling for musical slur prediction.
